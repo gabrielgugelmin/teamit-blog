@@ -1,0 +1,19 @@
+.post {
+  margin-bottom: 32px;
+
+  &__title {
+    font-size: 24px;
+    margin: 0 0 8px;
+  }
+
+  &__date {
+    font-size: 14px;
+    margin: 0 0 16px;
+  }
+
+  &__content {
+    p {
+      margin: 0 0 8px;
+    }
+  }
+}
