@@ -1,5 +1,6 @@
+import { Link } from "react-router-dom";
 import { Post } from "../../interfaces/blog";
-import sanitize from "../../utils/purify";
+import { formatDate } from "../../utils/date";
 
 import "./styles.scss";
 
@@ -9,21 +10,21 @@ interface Props {
 
 const BlogPost = ({ post }: Props) => {
   return (
-    <div className="post">
+    <Link className="post" to={`/post/${post.id}`}>
       <div className="post__img">
         <img
-          src={`https://picsum.photos/340/220?random=${post.id}`}
+          src={`https://picsum.photos/340/220?grayscale&random=${post.id}`}
           alt="Random generated for blog post"
         />
       </div>
       <div className="post__content">
         <h3 className="post__title">{post.title}</h3>
         <span className="post__info">
-          {post.author} ● {post.publish_date}
+          {post.author} ● {formatDate(post.publish_date)}
         </span>
         <p>{post.description}</p>
       </div>
-    </div>
+    </Link>
   );
 };
 

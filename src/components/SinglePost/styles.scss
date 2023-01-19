@@ -1,0 +1,21 @@
+@import "../../styles/_colors.scss";
+
+.single-post {
+  &__header {
+    text-align: center;
+  }
+
+  &__title {
+    margin: 0 0 8px;
+  }
+
+  &__date {
+    color: $gray;
+    font-size: 14px;
+    margin: 0 0 16px;
+  }
+
+  &__banner {
+    margin: 32px 0;
+  }
+}
