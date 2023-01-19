@@ -1,0 +1,9 @@
+.post-list {
+  display: grid;
+  grid-gap: 32px 8px;
+  justify-content: center;
+
+  &--grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

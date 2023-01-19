@@ -4,11 +4,25 @@ html {
   font-family: 'Roboto', sans-serif;
 }
 
+body {
+  margin: 0;
+}
+
 h1,
 h2,
 h3,
 h4,
 h5,
 h6 {
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Dosis', sans-serif;
+}
+
+button {
+  cursor: pointer;
+}
+
+.container {
+  margin: 0 auto;
+  padding: 0 16px;
+  max-width: 1280px;
 }

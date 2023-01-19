@@ -10,14 +10,19 @@ interface Props {
 const BlogPost = ({ post }: Props) => {
   return (
     <div className="post">
-      <h3 className="post__title">{post.author}</h3>
-      <p className="post__date">{post.publish_date}</p>
-      <div
-        className="post__content"
-        dangerouslySetInnerHTML={{
-          __html: sanitize(post.content),
-        }}
-      ></div>
+      <div className="post__img">
+        <img
+          src={`https://picsum.photos/340/220?random=${post.id}`}
+          alt="Random generated for blog post"
+        />
+      </div>
+      <div className="post__content">
+        <h3 className="post__title">{post.title}</h3>
+        <span className="post__info">
+          {post.author} ● {post.publish_date}
+        </span>
+        <p>{post.description}</p>
+      </div>
     </div>
   );
 };
