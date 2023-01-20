@@ -1,4 +1,4 @@
-import { Post } from "../interfaces/blog";
+import { Post, Comment } from "../interfaces/blog";
 import api from "./index";
 
 export class BlogService {
@@ -9,6 +9,11 @@ export class BlogService {
 
   async getPost(postId: string): Promise<Post> {
     const { data } = await api().get(`/posts/${postId}`);
+    return data;
+  }
+
+  async getPostComments(postId: string): Promise<Comment[]> {
+    const { data } = await api().get(`/posts/${postId}/comments`);
     return data;
   }
 }

@@ -1,0 +1,39 @@
+@import "../../../styles/_colors.scss";
+
+.comment {
+  display: flex;
+  margin-bottom: 32px;
+
+  &__avatar {
+    align-items: center;
+    background-color: $gray-light;
+    border-radius: 50%;
+    color: black;
+    display: inline-flex;
+    flex-shrink: 0;
+    height: 48px;
+    justify-content: center;
+    line-height: 48px;
+    margin-right: 16px;
+    width: 48px;
+  }
+
+  &__box {
+    background-color: $gray-light;
+    color: black;
+    padding: 16px;
+
+    p {
+      &:only-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  &__container {}
+
+  &__date {
+    color: $gray;
+    font-size: 12px;
+  }
+}
