@@ -5,6 +5,7 @@ import BlogService from "../../services/BlogService";
 import { formatDate } from "../../utils/date";
 import sanitize from "../../utils/purify";
 import CommentList from "./CommentList";
+import NewComment from "./NewComment";
 
 import "./styles.scss";
 
@@ -48,7 +49,6 @@ const SinglePost = () => {
             }}
           ></div>
         )}
-
         <CommentList />
       </div>
     </div>

@@ -11,3 +11,13 @@ export function formatDate(date?: string): string {
     d.getFullYear(),
   ].join("/");
 }
+
+export function formatDateToSave(): string {
+  const date = new Date();
+
+  return [
+    date.getFullYear(),
+    padTo2Digits(date.getMonth() + 1),
+    padTo2Digits(date.getDate()),
+  ].join("-");
+}

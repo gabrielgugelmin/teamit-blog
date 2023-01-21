@@ -11,11 +11,12 @@
     color: black;
     display: inline-flex;
     flex-shrink: 0;
-    height: 48px;
+    font-size: 14px;
+    height: 42px;
     justify-content: center;
-    line-height: 48px;
+    line-height: 42px;
     margin-right: 16px;
-    width: 48px;
+    width: 42px;
   }
 
   &__box {
@@ -33,7 +34,18 @@
   &__container {}
 
   &__date {
+    display: block;
     color: $gray;
     font-size: 12px;
+  }
+
+  &__footer {
+    display: flex;
+  }
+
+  &__reply {
+    border: 0;
+    background-color: transparent;
+    color: blue;
   }
 }
