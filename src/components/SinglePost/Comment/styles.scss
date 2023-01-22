@@ -2,7 +2,12 @@
 
 .comment {
   display: flex;
+  flex-direction: column;
   margin-bottom: 32px;
+
+  .comment {
+    margin-bottom: 0;
+  }
 
   &__avatar {
     align-items: center;
@@ -31,21 +36,36 @@
     }
   }
 
-  &__container {}
+  &__container {
+    display: flex;
+    margin-bottom: 16px;
+  }
+
+  &__children {
+    margin-left: 48px;
+  }
+
+  &__content {
+    width: 100%;
+  }
 
   &__date {
-    display: block;
     color: $gray;
+    display: block;
     font-size: 12px;
+    line-height: 12px;
   }
 
   &__footer {
     display: flex;
+    align-items: center;
+    margin-top: 8px;
   }
 
   &__reply {
     border: 0;
     background-color: transparent;
-    color: blue;
+    color: $blue;
+    font-size: 12px;
   }
 }

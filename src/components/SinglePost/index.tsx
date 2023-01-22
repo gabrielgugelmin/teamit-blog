@@ -42,14 +42,16 @@ const SinglePost = () => {
           />
         </header>
 
-        {post?.content && (
-          <div
-            dangerouslySetInnerHTML={{
-              __html: sanitize(post.content),
-            }}
-          ></div>
-        )}
-        <CommentList />
+        <div className="single-post__content">
+          {post?.content && (
+            <div
+              dangerouslySetInnerHTML={{
+                __html: sanitize(post.content),
+              }}
+            ></div>
+          )}
+          <CommentList />
+        </div>
       </div>
     </div>
   );

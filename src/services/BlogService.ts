@@ -16,6 +16,7 @@ export class BlogService {
     const { data } = await api().get(`/posts/${postId}/comments`);
     return data;
   }
+
   async addComment(comment: Comment): Promise<void> {
     const { content, date, parent_id, postId, user } = comment;
 
@@ -24,6 +25,21 @@ export class BlogService {
       parent_id,
       user,
       date,
+      content,
+    });
+  }
+
+  async editComment(
+    comment: CommentWithId,
+    postId: string,
+    content: string
+  ): Promise<void> {
+    await api().put(`/comments/${comment.id}`, {
+      id: comment.id,
+      postId: postId,
+      parent_id: comment.parent_id,
+      user: comment.user,
+      date: comment.date,
       content,
     });
   }

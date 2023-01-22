@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { useParams } from "react-router-dom";
 import BlogService from "../../../services/BlogService";
 import { CommentWithChildren, CommentWithId } from "../../../interfaces/blog";
@@ -11,21 +11,20 @@ const CommentList = () => {
   const { postId } = useParams();
   const [comments, setComments] = useState<CommentWithId[]>();
 
-  useEffect(() => {
-    const fetchComments = async () => {
-      try {
-        if (postId) {
-          const response = await BlogService.getPostComments(postId);
-          setChildrenComments(response);
-          // setComments(response);
-        }
-      } catch (error) {
-        console.error(error);
+  const fetchComments = useCallback(async () => {
+    try {
+      if (postId) {
+        const response = await BlogService.getPostComments(postId);
+        setChildrenComments(response);
       }
-    };
-
-    fetchComments();
+    } catch (error) {
+      console.error(error);
+    }
   }, [postId]);
+
+  useEffect(() => {
+    fetchComments();
+  }, []);
 
   const setChildrenComments = (comments: CommentWithChildren[]) => {
     const nest = (
@@ -34,7 +33,10 @@ const CommentList = () => {
     ): CommentWithChildren[] =>
       items
         .filter(comment => comment.parent_id === id)
-        .map(comment => ({ ...comment, children: nest(items, comment.id) }));
+        .map(comment => ({ ...comment, children: nest(items, comment.id) }))
+        .sort(
+          (a, b) => new Date(b.date).valueOf() - new Date(a.date).valueOf()
+        );
 
     setComments(nest(comments));
   };
@@ -43,10 +45,19 @@ const CommentList = () => {
     <div className="comments">
       <div className="comments__header">
         <h3 className="comments__title">what's on your mind?</h3>
-        <NewComment postId={postId} parentId={null} />
+        <NewComment
+          postId={postId}
+          parentId={null}
+          fetchComments={fetchComments}
+        />
       </div>
       {comments?.map(comment => (
-        <CommentItem comment={comment} key={comment.id} postId={postId} />
+        <CommentItem
+          comment={comment}
+          key={comment.id}
+          postId={postId}
+          fetchComments={fetchComments}
+        />
       ))}
     </div>
   );
