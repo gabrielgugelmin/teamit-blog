@@ -1,19 +1,62 @@
+@import "../../styles/_colors.scss";
+
+@mixin text-color() {
+  color: black;
+}
+
 .post {
+  display: flex;
+  flex-direction: row;
   margin-bottom: 32px;
+  max-width: 800px;
+  text-decoration: none;
 
   &__title {
-    font-size: 24px;
+    @include text-color();
+    font-size: 28px;
     margin: 0 0 8px;
   }
 
-  &__date {
+  &__info {
+    color: $gray;
+    display: block;
     font-size: 14px;
-    margin: 0 0 16px;
+    margin: 0 0 24px;
+  }
+
+  &__img {
+    flex-shrink: 0;
+    height: 220px;
+    width: 340px;
+
+    img {
+      box-shadow: 1px 1px 16px -3px rgb(0 0 0 / 0%);
+      border-radius: 2px;
+      display: block;
+      transition: box-shadow .4s ease-in-out;
+    }
   }
 
   &__content {
+    @include text-color();
+    padding: 0 16px;
+
     p {
       margin: 0 0 8px;
+    }
+  }
+
+  &:visited {
+    text-decoration: none;
+  }
+
+  &:hover {
+    cursor: pointer;
+
+    .post__img {
+      img {
+        box-shadow: 1px 1px 16px -3px rgb(0 0 0 / 39%);
+      }
     }
   }
 }

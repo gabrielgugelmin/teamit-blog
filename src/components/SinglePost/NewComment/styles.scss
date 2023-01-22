@@ -1,0 +1,47 @@
+@import "../../../styles/colors";
+
+.new-comment {
+    display: flex;
+    flex-direction: column;
+    margin: 8px 0 16px;
+
+    &__title {
+        text-align: center;
+    }
+
+    &__textarea {
+        background-color: $gray-light;
+        border: 0;
+        margin-bottom: 8px;
+        min-height: 120px;
+        min-width: 600px;
+        padding: 16px 32px;
+        resize: vertical;
+    }
+
+    &__submit {
+        background-color: $gray-light;
+        border: 0;
+        margin-left: auto;
+        padding: 8px 16px;
+        transition: background-color .3s ease;
+
+        &:hover {
+            background-color: darken($gray-light, 8%)
+        }
+    }
+
+    &__error {
+        color: $red;
+        font-size: 14px;
+        visibility: hidden;
+
+        &--visible {
+            visibility: visible;
+        }
+    }
+
+    &__footer {
+        display: flex;
+    }
+}
