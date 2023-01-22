@@ -3,8 +3,8 @@ import { Post } from "../../interfaces/blog";
 import BlogService from "../../services/BlogService";
 import BlogPost from "../BlogPost";
 
-import "./styles.scss";
 import GridChanger from "./GridChanger";
+import "./styles.scss";
 
 const BlogList = () => {
   const [posts, setPosts] = useState<Post[]>([]);
@@ -44,11 +44,17 @@ const BlogList = () => {
         handleGridChange={handleGridChange}
         isGridView={isGridView}
       />
-      <div className={`post-list ${isGridView ? "post-list--grid" : ""}`}>
-        {posts.map(post => (
-          <BlogPost post={post} key={post.id} />
-        ))}
-      </div>
+      {posts.length ? (
+        <div className={`post-list ${isGridView ? "post-list--grid" : ""}`}>
+          {posts.map(post => (
+            <BlogPost post={post} key={post.id} />
+          ))}
+        </div>
+      ) : (
+        <p className="post-list__error">
+          No results found... Maybe try running the server first? :)
+        </p>
+      )}
     </div>
   );
 };
