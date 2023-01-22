@@ -32,26 +32,34 @@ const SinglePost = () => {
   return (
     <div className="single-post">
       <div className="container">
-        <header className="single-post__header">
-          <h2 className="single-post__title">{post?.title}</h2>
-          <p className="single-post__date">{formatDate(post?.publish_date)}</p>
-          <img
-            src={`https://picsum.photos/1280/500?grayscale&random=${post?.id}`}
-            alt="Random generated for blog post"
-            className="single-post__banner"
-          />
-        </header>
+        {post ? (
+          <>
+            <header className="single-post__header">
+              <h2 className="single-post__title">{post?.title}</h2>
+              <p className="single-post__date">
+                {formatDate(post?.publish_date)}
+              </p>
+              <img
+                src={`https://picsum.photos/1280/500?grayscale&random=${post?.id}`}
+                alt="Random generated for blog post"
+                className="single-post__banner"
+              />
+            </header>
 
-        <div className="single-post__content">
-          {post?.content && (
-            <div
-              dangerouslySetInnerHTML={{
-                __html: sanitize(post.content),
-              }}
-            ></div>
-          )}
-          <CommentList />
-        </div>
+            <div className="single-post__content">
+              {post?.content && (
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html: sanitize(post.content),
+                  }}
+                ></div>
+              )}
+              <CommentList />
+            </div>
+          </>
+        ) : (
+          <p className="single-post__error">No post found :(</p>
+        )}
       </div>
     </div>
   );
